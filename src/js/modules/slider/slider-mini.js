@@ -2,7 +2,7 @@ import Slider from "./slider";
 
 export default class MiniSlider extends Slider {
 	constructor(container, next, prev, activeClass, animate, autoplay) {
-		super(container, next, prev, activeClass, animate, autoplay);
+			super(container, next, prev, activeClass, animate, autoplay);
 	}
 
 	decorizeSlides() {
@@ -44,6 +44,7 @@ export default class MiniSlider extends Slider {
 			this.next.addEventListener('click', () => this.nextSlide());
 
 			this.prev.addEventListener('click', () => {
+
 					for (let i = this.slides.length - 1; i > 0; i--) {
 							if (this.slides[i].tagName !== "BUTTON") {
 									let active = this.slides[i];
@@ -52,24 +53,26 @@ export default class MiniSlider extends Slider {
 									break;
 							}
 					}
+
+				 
 			});
 	}
 
 	init() {
 			try {
-				this.container.style.cssText = `
-						display: flex;
-						flex-wrap: wrap;
-						overflow: hidden;
-						align-items: flex-start;
-				`;
-				
-				this.bindTriggers();
-				this.decorizeSlides();
+					this.container.style.cssText = `
+					display: flex;
+					flex-wrap: wrap;
+					overflow: hidden;
+					align-items: flex-start;
+					`;
 
-				if (this.autoplay) {
-						setInterval(() => this.nextSlide(), 5000);
-				}
-			} catch (error) {}
+					this.bindTriggers();
+					this.decorizeSlides();
+
+					if (this.autoplay) {
+							setInterval(() => this.nextSlide(), 5000);
+					}
+			} catch(e){}
 	}
 }
